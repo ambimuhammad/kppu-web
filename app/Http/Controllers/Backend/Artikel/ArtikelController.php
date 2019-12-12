@@ -132,9 +132,9 @@ class ArtikelController extends Controller
     {
         if ($request->ajax()) {
             $artikel = Artikel::findOrFail($id);
+            unlink('Artikel/' . $artikel->judul . '/', $artikel->featured_image);
             $artikel->delete();
 
-            // $notify = Alert::alert('Sukses', 'Data Berhasil Di Hapus', '');
             return response()->json(array(
                 'title' => 'Sukses Hapus artikel',
                 'text' => "Klik Oke Untuk Reload Page",
