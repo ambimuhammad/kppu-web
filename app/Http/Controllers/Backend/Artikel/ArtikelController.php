@@ -12,6 +12,7 @@ use App\Http\Requests\Artikel\ArtikelRequest;
 use Alert;
 use Carbon\Carbon;
 use Auth;
+use File;
 
 class ArtikelController extends Controller
 {
@@ -132,7 +133,11 @@ class ArtikelController extends Controller
     {
         if ($request->ajax()) {
             $artikel = Artikel::findOrFail($id);
-            unlink('Artikel/' . $artikel->judul . '/', $artikel->featured_image);
+            $file_path = 'Artikel/' . $artikel->judul . '/' . $artikel->featured_image;
+            if (File::exists($file_path)) {
+                File::delete($file_path);
+                File::deleteDirectory(public_path('Artikel/' . $artikel->judul));
+            }
             $artikel->delete();
 
             return response()->json(array(
