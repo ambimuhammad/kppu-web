@@ -65,6 +65,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('slider.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sliders-h"></i>
+                        <p>Slider</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('tag.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tag"></i>
                         <p>Tag</p>

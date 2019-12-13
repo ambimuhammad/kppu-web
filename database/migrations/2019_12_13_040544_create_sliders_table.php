@@ -15,6 +15,10 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name_slider');
+            $table->string('path');
+            $table->string('size');
+            $table->date('periode');
             $table->timestamps();
         });
     }
