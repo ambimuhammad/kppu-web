@@ -59,8 +59,8 @@ class SliderController extends Controller
             $name = $file->getClientOriginalName();
             $slider->name_slider = trim($name);
             $slider->size = $file->getSize();
-            $slider->path = trim('Slider/' . $request->input('deskripsi') . '/' . $name);
-            $file->move('Slider/' . $request->input('deskripsi') . '/', $name);
+            $slider->path = trim('Slider/' . strip_tags($request->input('deskripsi')) . '/' . $name);
+            $file->move('Slider/' . strip_tags($request->input('deskripsi')) . '/', $name);
         }
         $slider->periode = trim($request->input('periode'));
         $slider->save();
