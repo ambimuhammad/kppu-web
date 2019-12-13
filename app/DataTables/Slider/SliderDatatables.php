@@ -20,6 +20,11 @@ class SliderDatatables
                     $act .= '<img src="' . asset($slider->path) . '" width="150" heigt="180">';
                     return $act;
                 })
+                ->addColumn('desc', function ($slider) {
+                    $act = '';
+                    $act .= strip_tags($slider->deskripsi);
+                    return $act;
+                })
                 ->addColumn('action', function ($slider) {
                     $act = '';
                     if (Auth::user()->can('show slider')) {
@@ -36,7 +41,7 @@ class SliderDatatables
 
                     return $act;
                 })
-                ->rawColumns(['name_slider', 'img', 'action'])
+                ->rawColumns(['name_slider', 'desc', 'action'])
                 ->addIndexColumn()->make(true);
         } catch (\Exception $e) {
             throw new \ErrorException($e->getMessage());
