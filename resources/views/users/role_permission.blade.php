@@ -83,7 +83,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="nav-tabs-custom">
-                                    <ul class="nav nav-tabs">
+                                    <ul class="nav nav-tabs mb-3">
                                         <li class="active">
                                             <a href="#tab_1" data-toggle="tab">Permissions</a>
                                         </li>
@@ -102,7 +102,7 @@
                                             <div class="row">
                                                 @foreach ($permissions as $group)
                                                 <div class="col-md-3">
-                                                    <div class="card">
+                                                    <div class="card card-secondary">
                                                         <div class="card-header">
                                                             <h3 class="card-title">{{ $group->name }}</h3>
                                                         </div>
@@ -124,11 +124,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-primary btn-sm">
-                                        <i class="fa fa-send"></i> Set Permission
-                                    </button>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fa fa-send"></i> Set Permission
+                            </button>
+                        </div>
                     </form>
                     @endif
                 </div>

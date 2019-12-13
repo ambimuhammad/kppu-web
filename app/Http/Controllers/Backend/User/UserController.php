@@ -116,7 +116,7 @@ class UserController extends Controller
                 ->select('permissions.name')
                 ->join('permissions', 'role_has_permissions.permission_id', '=', 'permissions.id')
                 ->where('role_id', $getRole->id)->get()->pluck('name')->all();
-            $permissions = Group::with('permissions')->orderBy('id','ASC')->get();
+            $permissions = Group::with('permissions')->orderBy('name','ASC')->get();
             // dd($perm);
             //$permissions = Permission::orderBy('id','ASC')->get()->pluck('name')->all();
         }
@@ -146,14 +146,17 @@ class UserController extends Controller
         
         $data = [];
         foreach ($request->input('permission') as $perm) {
-            $ddd = json_decode($perm);
-            $sdsd = $ddd->id;
+            // pecah parameter permission ke array
+            $permissionJson = json_decode($perm);
+            $permission_id = $permissionJson->id;
             $data[] = [
-                'permission_id' => $sdsd,
+                'permission_id' => $permission_id,
                 'role_id' => $role->id
             ];
         }
+        // Hapus dulu data dalam tabel role has permission sesuai dengan role yang dipilih
         DB::table('role_has_permissions')->where('role_id', $role->id)->delete();
+        // lalu insert data baru sesuai dengan permission yang di berikan
         DB::table('role_has_permissions')->insert($data);
         return redirect()->back()->with(['success' => 'Permission to Role Saved!']);
     }
