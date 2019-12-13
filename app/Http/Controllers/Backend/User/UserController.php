@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User\User;
+use App\Models\Group\Group;
 use DB;
 use Auth;
 use App\Traits\Authorizable;
@@ -115,7 +116,9 @@ class UserController extends Controller
                 ->select('permissions.name')
                 ->join('permissions', 'role_has_permissions.permission_id', '=', 'permissions.id')
                 ->where('role_id', $getRole->id)->get()->pluck('name')->all();
-            $permissions = Permission::all()->pluck('name');
+            $permissions = Group::with('permissions')->orderBy('id','ASC')->get();
+            // dd($perm);
+            //$permissions = Permission::orderBy('id','ASC')->get()->pluck('name')->all();
         }
         return view('users.role_permission', compact('roles', 'permissions', 'hasPermission'));
     }
@@ -123,10 +126,15 @@ class UserController extends Controller
     public function addPermission(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|unique:permissions'
+            'name' => 'required|string|unique:permissions',
+            'group_name' => 'required|string'
+        ]);
+        $group = Group::updateOrCreate([
+            'name' => $request->group_name
         ]);
 
         $permission = Permission::firstOrCreate([
+            'group_id' => $group->id,
             'name' => $request->name
         ]);
         return redirect()->back();
@@ -135,7 +143,18 @@ class UserController extends Controller
     public function setRolePermission(Request $request, $role)
     {
         $role = Role::findByName($role);
-        $role->syncPermissions($request->permission);
+        
+        $data = [];
+        foreach ($request->input('permission') as $perm) {
+            $ddd = json_decode($perm);
+            $sdsd = $ddd->id;
+            $data[] = [
+                'permission_id' => $sdsd,
+                'role_id' => $role->id
+            ];
+        }
+        DB::table('role_has_permissions')->where('role_id', $role->id)->delete();
+        DB::table('role_has_permissions')->insert($data);
         return redirect()->back()->with(['success' => 'Permission to Role Saved!']);
     }
 }

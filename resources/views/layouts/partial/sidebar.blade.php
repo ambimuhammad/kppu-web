@@ -59,6 +59,12 @@
                 </li>
                 @role('admin')
                 <li class="nav-item">
+                    <a href="{{ route('about.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file-alt"></i>
+                        <p>About</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('kategori.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-bell"></i>
                         <p>Kategori</p>
