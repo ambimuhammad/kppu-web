@@ -45,112 +45,6 @@
 							">Buy now</a>
 				</li>
 				@endforeach
-				<!-- SLIDE  -->
-				{{-- <li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-saveperformance="on"  data-title="Ken Burns Slide">
-						<!-- MAIN IMAGE -->
-						<img src="{{ asset('front/trend/images/dummy.png') }}" alt="2"
-				data-lazyload="{{ asset('front/trend/images/slider/2.jpg') }}" data-bgposition="right top"
-				data-kenburns="on" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115"
-				data-bgfitend="100" data-bgpositionend="center bottom">
-				<!-- LAYERS -->
-				<!-- LAYER NR. 1 -->
-				<div class="tp-caption small_text lft tp-resizeme rs-parallaxlevel-0" data-x="center" data-y="210"
-					data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					data-speed="500" data-start="1200" data-easing="Power3.easeInOut" data-splitin="none"
-					data-splitout="none" data-elementdelay="0.05" data-endelementdelay="0.1" style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;
-							min-height: 0px;
-							position: absolute;
-							color: #fff;
-							text-shadow: none;
-							font-weight: 400;
-							font-size: 14px;
-							line-height: 20px;
-							margin: 0px;
-							border-width: 0px;
-							border-style: none;
-							text-transform: uppercase;
-							white-space: nowrap;
-							letter-spacing: 1.8px;
-							"><span>Why you choose this template</span>
-				</div>
-				<!-- LAYER NR. 2 -->
-				<div class="tp-caption small_text customin tp-resizeme rs-parallaxlevel-0" data-x="center" data-y="256"
-					data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					data-speed="500" data-start="1400" data-easing="Power3.easeInOut" data-splitin="none"
-					data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;   width: 60px !important;
-							height: 1px !important;
-							background: #fff !important;
-							">
-					<p class="line white"></p>
-				</div>
-				<!-- LAYER NR. 3 -->
-				<div class="tp-caption finewide_medium_white lfl tp-resizeme rs-parallaxlevel-0 center-align"
-					data-x="center" data-y="280"
-					data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					data-speed="500" data-start="1800" data-easing="Power3.easeInOut" data-splitin="none"
-					data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;  color: #222222;
-							text-shadow: none;
-							font-size: 48px;
-							line-height: 50px;
-							font-weight: 900;
-							background-color: none;
-							text-decoration: none;
-							font-family:Open Sans, sans-serif;
-							text-transform: uppercase;
-							border-width: 0px;
-							color: #fff;
-							text-align:center;
-							border-color: transparent;
-							border-style: none;
-							letter-spacing: 2.5;
-							"><span>A Creative way to show <br> your projects</span>
-				</div>
-				<!-- LAYER NR. 4 -->
-				<div class="tp-caption small_text customin tp-resizeme rs-parallaxlevel-0" data-x="center" data-y="405"
-					data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					data-speed="500" data-start="2000" data-easing="Power3.easeInOut" data-splitin="none"
-					data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1"
-					style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">
-					<p class="line white"></p>
-				</div>
-				<!-- LAYER NR. 5 -->
-				<div class="tp-caption small_text lfr tp-resizeme rs-parallaxlevel-0" data-x="center" data-y="435"
-					data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					data-speed="500" data-start="2400" data-easing="Power3.easeInOut" data-splitin="none"
-					data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;  position: absolute;
-							color: #222222;
-							text-shadow: none;
-							font-weight: 400;
-							font-size: 14px;
-							line-height: 20px;
-							margin: 0px;
-							border-width: 0px;
-							font-family:Open Sans, sans-serif;
-							text-transform: uppercase;
-							white-space: nowrap;
-							color: #fff;
-							letter-spacing: 1.8px;
-							"><span>Create UNLIMITED portfolios and showcase them ANYWHERE</span>
-				</div>
-				<!-- LAYER NR. 6 -->
-				<a href="#" class="tp-caption lfb tp-resizeme rs-parallaxlevel-0" data-x="center" data-y="490"
-					data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-					data-speed="500" data-start="2800" data-easing="Power3.easeInOut" data-splitin="none"
-					data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-linktoslide="next"
-					style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;padding:18px 28px;
-							color: #fff;
-							text-transform: uppercase;
-							border: none;
-							background:#000;
-							font-size: 13px;
-							letter-spacing: 2px;
-							font-family: Montserrat;
-							border-radius: 0px;
-							display: table;
-							transition: .4s;
-							border-radius:5px;">buy this theme</a>
-				</li> --}}
-				<!-- SLIDE  -->
 			</ul>
 			<div class="tp-bannertimer"></div>
 		</div>
@@ -162,11 +56,11 @@
 	<div class="container">
 		<div class="space60"></div>
 		<div class="welcome-content text-center">
-			<h2>Welcome to trend</h2>
+			<h2>Welcome to Dirgatz Indonesia</h2>
 			<p class="lead">The best looking template with mindblowing features</p>
 		</div>
 	</div>
-	<div class="space10"></div>
+	{{-- <div class="space10"></div>
 	<div class="container">
 		<div class="services">
 			<div class="row">
@@ -212,7 +106,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 
 	<div class="space10"></div>
 	<div class="container padding70">
