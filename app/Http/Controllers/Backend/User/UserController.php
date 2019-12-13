@@ -130,12 +130,12 @@ class UserController extends Controller
             'group_name' => 'required|string'
         ]);
         $group = Group::updateOrCreate([
-            'name' => $request->group_name
+            'name' => ucfirst($request->group_name)
         ]);
 
         $permission = Permission::firstOrCreate([
             'group_id' => $group->id,
-            'name' => $request->name
+            'name' => strtolower($request->name)
         ]);
         return redirect()->back();
     }
