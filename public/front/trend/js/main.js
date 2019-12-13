@@ -22,13 +22,6 @@
         manualControls: ".gal-nav li"
     });
 
-    // Twitterfeed
-    $('#tweetcool').tweecool({
-        profile_image: false,
-        username: 'envato',
-        limit: 1
-    });
-
     // SLIDER REVOLUTION
     jQuery('.tp-banner').show().revolution({
         dottedOverlay: "none",
@@ -418,15 +411,6 @@
 
     });
 
-    // FLICKRFEED
-
-    $('#flickr').jflickrfeed({
-        limit: 9,
-        qstrings: {
-            id: '51035555243@N01'
-        },
-        itemTemplate: '<li><a href="{{image_b}}"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
-    });
 
     // ACCORDION
 
