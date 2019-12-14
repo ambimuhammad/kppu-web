@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ]);
         Route::resource('/slider', 'Backend\Slider\SliderController');
         Route::resource('/about', 'Backend\About\AboutController');
+        Route::resource('/recent', 'Backend\RecentWork\RecentWorkController');
         Route::get('/users/roles/{id}', 'Backend\User\UserController@roles')->name('users.roles');
         Route::put('/users/roles/{id}', 'Backend\User\UserController@setRole')->name('users.set_role');
         Route::post('/users/permission', 'Backend\User\UserController@addPermission')->name('users.add_permission');

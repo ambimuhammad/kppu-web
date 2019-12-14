@@ -60,53 +60,6 @@
 			<p class="lead">The best looking template with mindblowing features</p>
 		</div>
 	</div>
-	{{-- <div class="space10"></div>
-	<div class="container">
-		<div class="services">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="service-content text-center">
-						<span><i class="icon-monitor"></i></span>
-						<div class="services-content">
-							<h2>Responsive Design</h2>
-							<p>Curabitur eleifend leo justo id risus vel imperdiet justo a cursus risusauctor
-								ullamcorper elit a feugiat.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="service-content text-center">
-						<span><i class="icon-cog3"></i></span>
-						<div class="services-content">
-							<h2>Fully Customizable</h2>
-							<p>Curabitur eleifend leo justo id risus vel imperdiet justo a cursus risusauctor
-								ullamcorper elit a feugiat.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="service-content text-center">
-						<span><i class="icon-layout"></i></span>
-						<div class="services-content">
-							<h2>unlimited Layouts</h2>
-							<p>Curabitur eleifend leo justo id risus vel imperdiet justo a cursus risusauctor
-								ullamcorper elit a feugiat.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="service-content text-center">
-						<span><i class="icon-support"></i></span>
-						<div class="services-content">
-							<h2>Live Support</h2>
-							<p>Curabitur eleifend leo justo id risus vel imperdiet justo a cursus risusauctor
-								ullamcorper elit a feugiat.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> --}}
 
 	<div class="space10"></div>
 	<div class="container padding70">
@@ -135,19 +88,21 @@
 		</div>
 		<ul class="filter" data-option-key="filter">
 			<li><a class="selected" href="#filter" data-option-value="*">All</a></li>
-			<li><a href="#" data-option-value=".branding">Branding</a></li>
-			<li><a href="#" data-option-value=".illustration">Illustration</a></li>
-			<li><a href="#" data-option-value=".web-design">Web Design</a></li>
-			<li><a href="#" data-option-value=".print">Print</a></li>
+			@foreach($recent as $re)
+			<li><a href="#" data-option-value=".{{ $re->name_recent_work }}">{{ $re->name_recent_work }}</a></li>
+			@endforeach
 		</ul>
 		<div id="portfolio-home" class="isotope">
-			<div class="project-item photography branding">
+			@foreach($recent as $res)
+			@foreach($res->galleries as $rest)
+			<div class="project-item {{ $res->name_recent_work }}">
 				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/1.jpg') }}" class="img-responsive" alt="">
+					<img src="{{ asset($rest->path) }}" style="width: 333px; height: 214px;" class="img-responsive"
+						alt="">
 					<div class="overlay-folio">
 						<div class="hover-box">
 							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/1.jpg') }}"><i
+								<a class="mp-lightbox zoom" href="{{ asset($rest->path) }}"><i
 										class="icon-plus2"></i></a>
 								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
 							</div>
@@ -159,168 +114,8 @@
 					<p>Web , Creative</p>
 				</div>
 			</div>
-			<div class="project-item illustration web-design illustration">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/2.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/2.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Vestibulum auctor</h2>
-					<p>Image Gallery</p>
-				</div>
-			</div>
-			<div class="project-item illustration print">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/3.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/3.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Cras ornare tristique elit</h2>
-					<p>Photoshop</p>
-				</div>
-			</div>
-			<div class="project-item photography web-design">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/4.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/4.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Praesent placerat risus quis</h2>
-					<p>UI/UX, Web Design</p>
-				</div>
-			</div>
-			<div class="project-item branding">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/5.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/5.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Ut aliquam sollicitudin</h2>
-					<p>Web Development</p>
-				</div>
-			</div>
-			<div class="project-item illustration web-design print">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/6.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/6.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Cras ornare tristique</h2>
-					<p>Creative, Web</p>
-				</div>
-			</div>
-			<div class="project-item photography branding illustration">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/7.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/7.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Vestibulum auctor</h2>
-					<p>Image Gallery</p>
-				</div>
-			</div>
-			<div class="project-item illustration web-design">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/8.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/8.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Aliquam tincidunt risus.</h2>
-					<p>Image Gallery</p>
-				</div>
-			</div>
-			<div class="project-item branding web-design print">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/9.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/9.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Cras ornare tristique</h2>
-					<p>Image Gallery</p>
-				</div>
-			</div>
-			<div class="project-item photography branding">
-				<div class="project-gal">
-					<img src="{{ asset('front/trend/images/projects/10.jpg') }}" class="img-responsive" alt="">
-					<div class="overlay-folio">
-						<div class="hover-box">
-							<div class="hover-zoom">
-								<a class="mp-lightbox zoom" href="{{ asset('front/trend/images/projects/10.jpg') }}"><i
-										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="project-info">
-					<h2>Aliquam erat volutpat</h2>
-					<p>Image Gallery</p>
-				</div>
-			</div>
+			@endforeach
+			@endforeach
 		</div>
 	</section>
 
