@@ -89,13 +89,14 @@
 		<ul class="filter" data-option-key="filter">
 			<li><a class="selected" href="#filter" data-option-value="*">All</a></li>
 			@foreach($recent as $re)
-			<li><a href="#" data-option-value=".{{ $re->name_recent_work }}">{{ $re->name_recent_work }}</a></li>
+			<li><a href="#" data-option-value=".{{ $re->kategori_recent_work }}">{{ $re->kategori_recent_work }}</a>
+			</li>
 			@endforeach
 		</ul>
 		<div id="portfolio-home" class="isotope">
 			@foreach($recent as $res)
 			@foreach($res->galleries as $rest)
-			<div class="project-item {{ $res->name_recent_work }}">
+			<div class="project-item {{ $res->kategori_recent_work }}">
 				<div class="project-gal">
 					<img src="{{ asset($rest->path) }}" style="width: 333px; height: 214px;" class="img-responsive"
 						alt="">
@@ -104,7 +105,7 @@
 							<div class="hover-zoom">
 								<a class="mp-lightbox zoom" href="{{ asset($rest->path) }}"><i
 										class="icon-plus2"></i></a>
-								<a class="link" href="portfolio-single-slider.html"><i class="icon-link3"></i></a>
+								<a class="link" href="{{ url('portfolio', $res->id) }}"><i class="icon-link3"></i></a>
 							</div>
 						</div>
 					</div>

@@ -50,7 +50,9 @@ class RecentWorkController extends Controller
     public function store(RecentWorkRequest $request)
     {
         $recent = new RecentWork();
+        $recent->kategori_recent_work = trim($request->input('kategori_recent_work'));
         $recent->name_recent_work = trim($request->input('name_recent_work'));
+        $recent->deskripsi_recent_work = trim($request->input('deskripsi_recent_work'));
         $recent->save();
 
         $data = [];

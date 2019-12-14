@@ -37,11 +37,35 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="judul">Kategori Recent Work</label>
+                                <input type="text" name="kategori_recent_work"
+                                    class="form-control {{ $errors->has('kategori_recent_work') ? 'is-invalid':'' }}"
+                                    id="kategori_recent_work" placeholder="Kategori Recent Work">
+                                @error('kategori_recent_work')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="judul">Nama Recent Work</label>
                                 <input type="text" name="name_recent_work"
                                     class="form-control {{ $errors->has('name_recent_work') ? 'is-invalid':'' }}"
                                     id="name_recent_work" placeholder="Name Recent Work">
                                 @error('name_recent_work')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="judul">Deskripsi Recent Work</label>
+                                <textarea name="deskripsi_recent_work"
+                                    class="textarea form-control {{ $errors->has('deskripsi_recent_work') ? 'is-invalid':'' }}"
+                                    placeholder="Place some text here"
+                                    style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
+                                    cols="5"></textarea>
+                                @error('deskripsi_recent_work')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -79,5 +103,7 @@
 @endsection
 @push('script')
 <script src="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
+<!-- Summernote -->
+<script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('js/RecentWork/component-recent-work.min.js') }}"></script>
 @endpush
