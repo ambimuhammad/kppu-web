@@ -21,16 +21,16 @@ class ContactDatatables
                 })
                 ->addColumn('action', function ($contact) {
                     $act = '';
-                    if (Auth::user()->can('show about')) {
-                        $act .= '<div class="btn btn-group"><a href="about/' . $contact->id . '/edit" class="btn btn-md btn-round btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fa fa-eye"></i></a>';
+                    if (Auth::user()->can('show contact')) {
+                        $act .= '<div class="btn btn-group"><a href="contact/' . $contact->id . '/edit" class="btn btn-md btn-round btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fa fa-eye"></i></a>';
                     }
 
-                    if (Auth::user()->can('edit about')) {
-                        $act .= '<a href="about/' . $contact->id . '/edit" class="btn btn-md btn-round btn-warning" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>';
+                    if (Auth::user()->can('edit contact')) {
+                        $act .= '<a href="contact/' . $contact->id . '/edit" class="btn btn-md btn-round btn-warning" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>';
                     }
 
-                    if (Auth::user()->can('delete about')) {
-                        $act .= '<button class="btn btn-danger btn-round btn-md confirmDeleteAbout" data-toggle="tooltip" data-placement="top" title="Hapus" data-id="' . $contact->id . '" type="submit" title="Delete"><i class="fa fa-trash"> </i></button></div>';
+                    if (Auth::user()->can('delete contact')) {
+                        $act .= '<button class="btn btn-danger btn-round btn-md confirmDeleteContact" data-toggle="tooltip" data-placement="top" title="Hapus" data-id="' . $contact->id . '" type="submit" title="Delete"><i class="fa fa-trash"> </i></button></div>';
                     }
 
                     return $act;
