@@ -2,8 +2,6 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-<link rel="stylesheet" type="text/css"
-    href="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
 <!-- Tempusdominus Bbootstrap 4 -->
 <link rel="stylesheet" href="{{ asset('template/plugins/daterangepicker/daterangepicker.css') }}">
 <!-- summernote -->
@@ -206,7 +204,6 @@
 <script src="{{ asset('template/plugins/daterangepicker/moment.min.js') }}"></script>
 <script src="{{ asset('template/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('template/plugins/select2/js/select2.min.js') }}"></script>
-<script src="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
 </script>
 <!-- Summernote -->
 <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>

@@ -14,9 +14,14 @@ class AboutDatatables
             $about = About::all();
             return DataTables::of($about)
                 ->addIndexColumn()
+                ->addColumn('images', function ($about) {
+                    $act = '';
+                    $act .= '<img src="' . asset($about->path) . '" width="150" heigt="180">';
+                    return $act;
+                })
                 ->addColumn('desc', function ($about) {
                     $act = '';
-                    $act .= htmlspecialchars_decode($about->deskripsi);
+                    $act .= htmlspecialchars_decode(\Str::limit($about->deskripsi, '200', '( ... )'));
                     return $act;
                 })
                 ->addColumn('action', function ($about) {
@@ -35,7 +40,7 @@ class AboutDatatables
 
                     return $act;
                 })
-                ->rawColumns(['desc', 'action'])
+                ->rawColumns(['images', 'desc', 'action'])
                 ->addIndexColumn()->make(true);
         } catch (\Exception $e) {
             throw new \ErrorException($e->getMessage());

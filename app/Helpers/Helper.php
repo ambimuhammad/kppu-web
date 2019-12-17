@@ -3,6 +3,9 @@
 namespace App\Helpers;
 use App\Models\Contact\Contact;
 use App\Models\Artikel\Artikel;
+use App\Models\Kategori\Kategori;
+use App\Models\About\About;
+use App\Models\Service\Service;
 
 class Helper {
     public static function get_footer_contact() {
@@ -23,6 +26,33 @@ class Helper {
             $act .= '<img src="'. asset($recentPost->path) .'" class="img-responsive" alt=""/>';
             $act .= '<h5><a href="'. url('artikels', $recentPost->path) .'">'. $recentPost->judul .'</a></h5>';
             $act .= '</li>';
+        }
+        return $act;
+    }
+
+    public static function get_menu_product() {
+        $kategori = Kategori::all();
+        $act = '';
+        foreach($kategori as $kategori) {
+            $act .= '<li><a href="'.$kategori->link.'">'.$kategori->nama_kategori.'</a></li>';
+        }
+        return $act;
+    }
+
+    public static function get_menu_about() {
+        $about = About::all();
+        $act = '';
+        foreach($about as $abouts) {
+            $act .= '<li><a href="'.route('front.about', \Str::slug($abouts->jenis_about, '-')).'">'.ucwords($abouts->jenis_about).'</a></li>';
+        }
+        return $act;
+    }
+
+    public static function get_menu_service() {
+        $service = Service::all();
+        $act = '';
+        foreach($service as $services) {
+            $act .= '<li><a href="'.route('front.service', \Str::slug($services->jenis_service, '-')).'">'.ucwords($services->jenis_service).'</a></li>';
         }
         return $act;
     }

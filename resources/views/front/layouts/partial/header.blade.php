@@ -13,22 +13,6 @@
 						alt="" /></a>
 			</div>
 
-			<!-- CART / SEARCH -->
-			<div class="header-x pull-right">
-				<div class="s-search">
-					<div class="ss-trigger"><i class="icon-search2"></i></div>
-					<div class="ss-content">
-						<span class="ss-close icon-cross2"></span>
-						<div class="ssc-inner">
-							<form>
-								<input type="text" placeholder="Type Search text here...">
-								<button type="submit"><i class="icon-search2"></i></button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
 			<div id="navbar-collapse-1" class="navbar-collapse collapse navbar-right">
 				<ul class="nav navbar-nav">
 					<li class="yamm-fw">
@@ -36,15 +20,41 @@
 							Home
 						</a>
 					</li>
-
-					<li class="yamm-fw">
-						<a href="#">
-							Service
+					<li class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+							About Us
+							<div class="arrow-up"><i class="fa fa-angle-down"></i></div>
 						</a>
+						<ul class="dropdown-menu" role="menu">
+							{!! Helper::get_menu_about() !!}
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+							Service
+							<div class="arrow-up"><i class="fa fa-angle-down"></i></div>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							{!! Helper::get_menu_service() !!}
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+							Product
+							<div class="arrow-up"><i class="fa fa-angle-down"></i></div>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							{!! Helper::get_menu_product() !!}
+						</ul>
 					</li>
 					<li class="dropdown">
 						<a href="{{ route('front.artikel') }}">
 							Blog
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="#">
+							Project Gallery
 						</a>
 					</li>
 					<li class="dropdown">

@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @push('css')
+<link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.css') }}">
+<link rel="stylesheet" href="{{ asset('css/Artikel/component.artikel.css') }}">
 @endpush
 @section('content')
 <section class="content-header">
@@ -35,6 +38,29 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="tag">Jenis</label>
+                                <select class="form-control select-jenis" name="jenis_about"
+                                    data-placholder="Pilih Jenis">
+                                    <option value="company profile">Company Profile</option>
+                                    <option value="visi misi">Visi & Misi</option>
+                                </select>
+                                @error('kategori_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="file" class="form-control" accept="image/*" onchange="preview_image(event)"
+                                    name="company_image">
+                                <img class="mt-3" id="output_image">
+                                @error('company_image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="deskripsi">Deskripsi</label>
                                 <textarea name="deskripsi"
                                     class="textarea form-control {{ $errors->has('deskripsi') ? 'is-invalid':'' }}"
@@ -62,5 +88,7 @@
 </script>
 <!-- Summernote -->
 <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('template/plugins/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('js/about/component-about.min.js') }}"></script>
+<script src="{{ asset('js/Artikel/component-artikel.min.js') }}"></script>
 @endpush

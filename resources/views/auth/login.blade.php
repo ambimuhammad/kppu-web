@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body login-card-body">
             <div class="login-logo">
-                <a href="#"><b>Jemla</b> Ferry</a>
+                <a href="#"><b>Dirgatz</b> Indonesia</a>
             </div>
             <p class="login-box-msg">Sign in to start your session</p>
             <form method="POST" action="{{ route('login') }}">

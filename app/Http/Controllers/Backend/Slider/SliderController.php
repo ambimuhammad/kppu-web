@@ -105,6 +105,15 @@ class SliderController extends Controller
         //
         $slider = Slider::findOrFail($id);
         $slider->nama_artikel = trim($request->input('nama_artikel'));
+        if ($request->hasfile('name_slider')) {
+            $file = $request->file('name_slider');
+            $name = $file->getClientOriginalName();
+            $slider->name_slider = trim($name);
+            $slider->size = $file->getSize();
+            $slider->path = trim('Slider/' . strip_tags($request->input('deskripsi')) . '/' . $name);
+            $file->move('Slider/' . strip_tags($request->input('deskripsi')) . '/', $name);
+        }
+        $slider->periode = trim($request->input('periode'));
         $slider->save();
 
         Alert::success('Sukses', 'Slider Berhasil Diubah');

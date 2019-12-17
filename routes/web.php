@@ -25,6 +25,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::resource('/about', 'Backend\About\AboutController');
         Route::resource('/contact', 'Backend\Contact\ContactController');
         Route::resource('/recent', 'Backend\RecentWork\RecentWorkController');
+        Route::resource('/service', 'Backend\Service\ServiceController');
+        Route::resource('/client', 'Backend\Client\ClientController');
         Route::get('/users/roles/{id}', 'Backend\User\UserController@roles')->name('users.roles');
         Route::put('/users/roles/{id}', 'Backend\User\UserController@setRole')->name('users.set_role');
         Route::post('/users/permission', 'Backend\User\UserController@addPermission')->name('users.add_permission');

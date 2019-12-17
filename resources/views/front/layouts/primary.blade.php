@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
 
-	<title>Trend | Responsive Multipurpose Bootstrap Theme</title>
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+	<title>{{ config('app.name') }}</title>
 	<!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -27,9 +28,12 @@
 	<link rel="stylesheet" href="{{ asset('front/trend/css/style.css') }}">
 
 	<!-- Google Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link
+		href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+		rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet'
+		type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800' rel='stylesheet' type='text/css'>
 
 	<!-- Icon Fonts -->
@@ -49,19 +53,20 @@
 	<![endif]-->
 
 </head>
+
 <body>
 	<div class="outer-wrapper">
 		@include('front.layouts.partial.header')
 
 		@yield('content')
-		
-        @include('front.layouts.partial.footer')
-        
+
+		@include('front.layouts.partial.footer')
+
 	</div>
 
 	<!-- STYLE SWITCHER 
 ============================================= -->
-    @include('front.layouts.partial.switcher')
+	@include('front.layouts.partial.switcher')
 	<!-- END STYLE SWITCHER 
 ============================================= -->
 
@@ -72,7 +77,7 @@
 	<script src="{{ asset('front/trend/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('front/trend/js/menu.js') }}"></script>
 	<script src="{{ asset('front/trend/js/owl-carousel/owl.carousel.min.js') }}"></script>
-	<script src="{{ asset('front/trend/js/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>   
+	<script src="{{ asset('front/trend/js/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
 	<script src="{{ asset('front/trend/js/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 	<script src="{{ asset('front/trend/js/jquery.easing.min.js') }}"></script>
 	<script src="{{ asset('front/trend/js/isotope/isotope.pkgd.js') }}"></script>
@@ -86,7 +91,7 @@
 	<script src="{{ asset('front/trend/js/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
 	<script src="{{ asset('front/trend/js/main.js') }}"></script>
-    @stack('script')
+	@stack('script')
 </body>
 
 </html>

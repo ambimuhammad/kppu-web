@@ -124,12 +124,10 @@ return [
     |
     */
 
-    // 'cookie' => env(
-    //     'SESSION_COOKIE',
-    //     Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
-    // ),
-
-    'cookie' => 'dirgatz_session',
+    'cookie' => env(
+        'SESSION_COOKIE',
+        Str::slug(env('APP_NAME', 'dirgatz'), '_').'_session'
+    ),
 
     /*
     |--------------------------------------------------------------------------

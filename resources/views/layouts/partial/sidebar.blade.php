@@ -94,8 +94,22 @@
                 <li class="nav-item">
                     <a href="{{ route('recent.index') }}"
                         class="nav-link {{ (Request::segment(2) == 'recent') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cog"></i>
+                        <i class="nav-icon fas fa-images"></i>
                         <p>Recent Work</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('service.index') }}"
+                        class="nav-link {{ (Request::segment(2) == 'service') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Services</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('client.index') }}"
+                        class="nav-link {{ (Request::segment(2) == 'client') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Clients</p>
                     </a>
                 </li>
                 <li class="nav-item">

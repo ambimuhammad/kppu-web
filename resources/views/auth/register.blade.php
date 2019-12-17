@@ -2,7 +2,7 @@
 @section('content-aut')
 <div class="register-box">
     <div class="register-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>Dirgatz</b> Indonesia</a>
     </div>
 
     <div class="card">

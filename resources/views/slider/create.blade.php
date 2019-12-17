@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <input type="file" class="form-control" accept="image/*" onchange="preview_image(event)"
-                                    name="featured_image">
+                                    name="name_slider">
                                 <img class="mt-3" id="output_image">
                                 @error('name_slider')
                                 <span class="invalid-feedback" role="alert">

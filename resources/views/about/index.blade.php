@@ -37,6 +37,7 @@
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
+                                    <th>Image</th>
                                     <th>Deskripsi</th>
                                     <th width="15%">Action</th>
                                 </tr>

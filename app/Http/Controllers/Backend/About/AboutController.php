@@ -48,7 +48,18 @@ class AboutController extends Controller
     {
         //
         $about = new About();
+        $about->jenis_about = trim($request->input('jenis_about'));
         $about->deskripsi = trim($request->input('deskripsi'));
+
+        if ($request->hasFile('company_image')) {
+            $file = $request->file('company_image');
+            $name = $file->getClientOriginalName();
+            $about->company_image = trim($name);
+            $about->size = $file->getSize();
+            $about->path = trim('About/Company Profile/' . $name);
+            $file->move('About/Company Profile/', $name);
+        }
+
         $about->save();
 
         Alert::success('Sukses', 'About Berhasil Ditambahkan');
@@ -90,7 +101,17 @@ class AboutController extends Controller
     {
         //
         $about = About::findOrFail($id);
+        $about->jenis_about = trim($request->input('jenis_about'));
         $about->deskripsi = trim($request->input('deskripsi'));
+        if ($request->hasFile('company_image')) {
+            $file = $request->file('company_image');
+            $name = $file->getClientOriginalName();
+            $about->company_image = trim($name);
+            $about->size = $file->getSize();
+            $about->path = trim('About/Company Profile/' . $name);
+            $file->move('About/Company Profile/', $name);
+        }
+        
         $about->save();
 
         Alert::success('Sukses', 'About Berhasil Diubah');

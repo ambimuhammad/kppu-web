@@ -79,9 +79,7 @@
                     <h4>Categories</h4>
                     <ul class="list-unstyled cat-list">
                         @foreach($artikelWithCategories as $kategori)
-                        @foreach($kategori->kategoris as $kategories)
-                        <li><a href="#">{{ $kategories->nama_kategori }}</a> <i class="icon-plus2"></i></li>
-                        @endforeach
+                        <li><a href="#">{{ $kategori->nama_kategori }}</a> <i class="icon-plus2"></i></li>
                         @endforeach
                     </ul>
                 </div>
