@@ -9,6 +9,7 @@ use App\Models\About\About;
 use App\Models\RecentWork\RecentWork;
 use App\Models\RecentWorkGalleries\RecentWorkGalleries;
 use App\Models\Artikel\Artikel;
+use App\Models\Contact\Contact;
 class FrontController extends Controller
 {
     public function index()
@@ -48,5 +49,11 @@ class FrontController extends Controller
         $single = Artikel::with('users')->where('slug', $slug)->first();
         $artikelTerakhir = Artikel::with('users')->orderBy('published_at', 'DESC')->take(3)->get();
         return view('front.pages.single-artikel', compact('single', 'artikelTerakhir'));
+    }
+
+    public function contact()
+    {
+        $contact = Contact::first();
+        return view('front.pages.contact', compact('contact'));
     }
 }

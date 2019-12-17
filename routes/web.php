@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('/portfolio/{id}', 'Frontend\FrontController@singleRecentWork')->name('front.singlework');
-Route::get('/artikels', 'Frontend\FrontController@artikel')->name('front.artikel');
-Route::get('/artikels/{slug}', 'Frontend\FrontController@singleArtikel')->name('front.singleartikel');
-Route::get('/', 'Frontend\FrontController@index')->name('front.index');
-
-// Route::get('/', function () {
-//     return redirect(route('login'));
-// });
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', 'Backend\Dashboard\DashboardController@index')->name('dashboard');
@@ -31,6 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ]);
         Route::resource('/slider', 'Backend\Slider\SliderController');
         Route::resource('/about', 'Backend\About\AboutController');
+        Route::resource('/contact', 'Backend\Contact\ContactController');
         Route::resource('/recent', 'Backend\RecentWork\RecentWorkController');
         Route::get('/users/roles/{id}', 'Backend\User\UserController@roles')->name('users.roles');
         Route::put('/users/roles/{id}', 'Backend\User\UserController@setRole')->name('users.set_role');
