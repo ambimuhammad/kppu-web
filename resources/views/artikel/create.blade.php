@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <link rel="stylesheet" type="text/css"
     href="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
 <!-- Tempusdominus Bbootstrap 4 -->
 <link rel="stylesheet" href="{{ asset('template/plugins/daterangepicker/daterangepicker.css') }}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.css') }}">
+<link rel="stylesheet" href="{{ asset('css/Artikel/component.artikel.css') }}">
 @endpush
 @section('content')
 <section class="content-header">
@@ -136,7 +137,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tag">Kategori</label>
-                                <select class="form-control select-kategori" multiple name="kategori_id">
+                                <select class="form-control select-kategori" multiple name="kategori_id[]">
                                     <option></option>
                                     @foreach($kategori as $kat)
                                     <option value="{{ $kat->id }}">{{ $kat->nama_kategori }}</option>
@@ -150,7 +151,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tag">Tag</label>
-                                <select class="form-control select-tag" multiple name="tag_id">
+                                <select class="form-control select-tag" multiple name="tag_id[]">
                                     <option></option>
                                     @foreach($tag as $tags)
                                     <option value="{{ $tags->id }}">{{ $tags->nama_tag }}</option>
@@ -180,18 +181,9 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <div class="custom-file-container" data-upload-id="myUniqueUploadId">
-                                    <label>Upload File <a href="javascript:void(0)"
-                                            class="custom-file-container__image-clear"
-                                            title="Clear Image">&times;</a></label>
-                                    <label class="custom-file-container__custom-file">
-                                        <input type="file" name="featured_image"
-                                            class="custom-file-container__custom-file__custom-file-input" accept="*"
-                                            aria-label="Choose File">
-                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
-                                    </label>
-                                    <div class="custom-file-container__image-preview"></div>
-                                </div>
+                                <input type="file" class="form-control" accept="image/*" onchange="preview_image(event)"
+                                    name="featured_image">
+                                <img class="mt-3" id="output_image">
                                 @error('featured_image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -219,4 +211,5 @@
 <!-- Summernote -->
 <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('js/Artikel/component-artikel.min.js') }}"></script>
-@endpush
+<script>
+    @endpush

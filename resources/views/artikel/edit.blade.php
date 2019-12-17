@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @push('css')
-<link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
-<link rel="stylesheet" type="text/css"
-    href="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
+<link rel="stylesheet" href="{{ asset('template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <!-- Tempusdominus Bbootstrap 4 -->
 <link rel="stylesheet" href="{{ asset('template/plugins/daterangepicker/daterangepicker.css') }}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.css') }}">
+<link rel="stylesheet" href="{{ asset('css/Artikel/component.artikel.css') }}">
 @endpush
 @section('content')
 <section class="content-header">
@@ -31,8 +30,11 @@
 <section class="content">
     <div class="container-fluid">
         <!-- /.card-header -->
-        <form role="form" action="{{ route('artikel.store') }}" method="POST" enctype="multipart/form-data">
+        <form role="form" action="{{ route('artikel.update', $artikel->id) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{{ $artikel->id }}">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -44,7 +46,7 @@
                                 <label for="judul">Judul</label>
                                 <input type="text" id="slugs" name="judul"
                                     class="form-control {{ $errors->has('judul') ? 'is-invalid':'' }}" id="judul"
-                                    placeholder="Judul">
+                                    placeholder="Judul" value="{{ old('judul') ?? $artikel->judul }}">
                                 @error('judul')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -60,7 +62,8 @@
                                         </div>
                                     </div>
                                     <input type="text" id="convert_slug" name="slug" readonly="readonly"
-                                        class="form-control" placeholder="url-address">
+                                        class="form-control" placeholder="url-address"
+                                        value="{{ old('slug') ?? $artikel->slug }}">
                                 </div>
                                 @error('slug')
                                 <span class="invalid-feedback" role="alert">
@@ -72,7 +75,7 @@
                                 <label for="deskripsi">Deskripsi</label>
                                 <textarea name="deskripsi" class="textarea" placeholder="Place some text here"
                                     style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"
-                                    cols="5"></textarea>
+                                    cols="5">{!! $artikel->deskripsi !!}"</textarea>
                                 @error('deskripsi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -83,7 +86,8 @@
                                 <label for="meta name">Meta Name</label>
                                 <input type="text" name="meta_name"
                                     class="form-control {{ $errors->has('meta_name') ? 'is-invalid':'' }}"
-                                    id="meta_name" placeholder="Meta Name">
+                                    id="meta_name" placeholder="Meta Name"
+                                    value="{{ old('meta_name') ?? $artikel->meta_name }}">
                                 @error('meta_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -94,7 +98,8 @@
                                 <label for="meta deskripsi">Meta Description</label>
                                 <input type="text" name="meta_description"
                                     class="form-control {{ $errors->has('meta_description') ? 'is-invalid':'' }}"
-                                    id="meta_description" placeholder="Meta Description">
+                                    id="meta_description" placeholder="Meta Description"
+                                    value="{{ old('meta_description') ?? $artikel->meta_description }}">
                                 @error('meta_description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -105,7 +110,8 @@
                                 <label for="meta tag">Meta Tags</label>
                                 <input type="text" name="meta_tags"
                                     class="form-control {{ $errors->has('meta_tags') ? 'is-invalid':'' }}"
-                                    id="meta_tags" placeholder="Meta Tags">
+                                    id="meta_tags" placeholder="Meta Tags"
+                                    value="{{ old('meta_tags') ?? $artikel->meta_tags }}">
                                 @error('meta_tags')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -123,10 +129,12 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="tag">Status</label>
-                                <select class="form-control select-status" name="status">
-                                    <option></option>
-                                    <option value="Draft">Draft</option>
-                                    <option value="Publish">Publish</option>
+                                <select class="form-control select-status" name="status" data-placeholder="Pilih Status"
+                                    style="width:100%;">
+                                    <option value="Draft" {{ ($artikel->status == 'Draft') ? 'selected' : '' }}>Draft
+                                    </option>
+                                    <option value="Publish" {{ ($artikel->status == 'Publish') ? 'selected' : '' }}>
+                                        Publish</option>
                                 </select>
                                 @error('kategori_id')
                                 <span class="invalid-feedback" role="alert">
@@ -136,11 +144,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="tag">Kategori</label>
-                                <select class="form-control select-kategori" multiple name="kategori_id">
-                                    <option></option>
+                                <select class="form-control select-kategori" style="width:100%;"
+                                    data-placeholder="Pilih Kategori" multiple name="kategori_id[]">
                                     @foreach($kategori as $kat)
-                                    <option value="{{ $kat->id }}">{{ $kat->nama_kategori }}</option>
+                                    <option value="{{ $kat->id }}" @foreach ($artikel->kategoris as $kategori)
+                                        @if ($kategori->id == $kat->id)
+                                        selected
+                                        @endif
+                                        @endforeach>{{ $kat->nama_kategori }}</option>
                                     @endforeach
+                                </select>
                                 </select>
                                 @error('kategori_id')
                                 <span class="invalid-feedback" role="alert">
@@ -150,10 +163,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="tag">Tag</label>
-                                <select class="form-control select-tag" multiple name="tag_id">
-                                    <option></option>
-                                    @foreach($tag as $tags)
-                                    <option value="{{ $tags->id }}">{{ $tags->nama_tag }}</option>
+                                <select class="form-control select-tag" style="width:100%;" data-placeholder="Pilih Tag"
+                                    multiple name="tag_id[]">
+                                    @foreach($tag as $tagz)
+                                    <option value="{{ $tagz->id }}" @foreach ($artikel->tags as $tagx)
+                                        @if ($tagx->id == $tagz->id)
+                                        selected
+                                        @endif
+                                        @endforeach>{{ $tagz->nama_tag }}</option>
                                     @endforeach
                                 </select>
                                 @error('tag_id')
@@ -169,7 +186,8 @@
                                         <span class="input-group-text"><i class="far fa-calendar"></i></span>
                                     </div>
                                     <input type="text" name="published_at" class="form-control float-right"
-                                        id="reservationtime">
+                                        id="reservationtime"
+                                        value="{{ old('published_at') ?? $artikel->published_at }}">
                                 </div>
                             </div>
                         </div>
@@ -180,17 +198,17 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <div class="custom-file-container" data-upload-id="myUniqueUploadId">
-                                    <label>Upload File <a href="javascript:void(0)"
-                                            class="custom-file-container__image-clear"
-                                            title="Clear Image">&times;</a></label>
-                                    <label class="custom-file-container__custom-file">
-                                        <input type="file" name="featured_image"
-                                            class="custom-file-container__custom-file__custom-file-input" accept="*"
-                                            aria-label="Choose File">
-                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
-                                    </label>
-                                    <div class="custom-file-container__image-preview"></div>
+                                <div class="container">
+                                    <img class="mt-3" id="output_image_edit" src="{{ asset($artikel->path) }}">
+                                    <img class="mt-3" id="output_image">
+                                    <div class="overlay"></div>
+                                    <div class="button">
+                                        <div class="upload-btn-wrapper">
+                                            <button class="btn btn-primary">Change Image</button>
+                                            <input type="file" name="featured_image" class="form-control"
+                                                accept="image/*" onchange="preview_image(event)">
+                                        </div>
+                                    </div>
                                 </div>
                                 @error('featured_image')
                                 <span class="invalid-feedback" role="alert">
@@ -200,6 +218,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a class="btn btn-warning" href="{{ route('artikel.index') }}">Kembali</a>
                             <button class="btn btn-primary">Simpan</button>
                         </div>
                     </div>
@@ -214,7 +233,6 @@
 <script src="{{ asset('template/plugins/daterangepicker/moment.min.js') }}"></script>
 <script src="{{ asset('template/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ asset('template/plugins/select2/js/select2.min.js') }}"></script>
-<script src="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
 </script>
 <!-- Summernote -->
 <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>

@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @push('css')
-<link rel="stylesheet" type="text/css"
-    href="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.css">
 <link rel="stylesheet" href="{{ asset('template/plugins/daterangepicker/daterangepicker.css') }}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.css') }}">
+<link rel="stylesheet" href="{{ asset('css/Artikel/component.artikel.css') }}">
 @endpush
 @section('content')
 <section class="content-header">
@@ -38,18 +37,9 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <div class="custom-file-container" data-upload-id="myUniqueUploadId">
-                                    <label>Upload File <a href="javascript:void(0)"
-                                            class="custom-file-container__image-clear"
-                                            title="Clear Image">&times;</a></label>
-                                    <label class="custom-file-container__custom-file">
-                                        <input type="file" name="name_slider"
-                                            class="custom-file-container__custom-file__custom-file-input" accept="*"
-                                            aria-label="Choose File">
-                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
-                                    </label>
-                                    <div class="custom-file-container__image-preview"></div>
-                                </div>
+                                <input type="file" class="form-control" accept="image/*" onchange="preview_image(event)"
+                                    name="featured_image">
+                                <img class="mt-3" id="output_image">
                                 @error('name_slider')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,9 +81,9 @@
 @push('script')
 <script src="{{ asset('template/plugins/daterangepicker/moment.min.js') }}"></script>
 <script src="{{ asset('template/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script src="//unpkg.com/file-upload-with-preview@4.0.2/dist/file-upload-with-preview.min.js"></script>
 </script>
 <!-- Summernote -->
 <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('js/Slider/component-slider.min.js') }}"></script>
+<script src="{{ asset('js/Artikel/component-artikel.min.js') }}"></script>
 @endpush
