@@ -101,7 +101,7 @@
                 <li class="nav-item">
                     <a href="{{ route('contact.index') }}"
                         class="nav-link {{ (Request::segment(2) == 'contact') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-map-o"></i>
+                        <i class="nav-icon fas fa-map-marked-alt"></i>
                         <p>Contact</p>
                     </a>
                 </li>
