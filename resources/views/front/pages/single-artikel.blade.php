@@ -38,7 +38,7 @@
             </div>
             <aside class="col-sm-3 ">
                 <div class="side-widget space50">
-                    <h4>Search</h4>
+                    <h4>Search</h4> 
                     <form method="GET" role="form" class="search-widget" action="{{ route('front.artikel') }}">
                         <input class="form-control" name="search" type="text">
                         <button type="submit"><i class="fa fa-search"></i></button>
@@ -47,11 +47,9 @@
                 <div class="side-widget space50">
                     <h4>Categories</h4>
                     <ul class="list-unstyled cat-list">
-                        <li> <a href="#">Marketing</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Photography</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Webdesign</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Fashion</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Seo Strategy</a> <i class="icon-plus2"></i></li>
+                        @foreach($artikelWithCategories->kategoris as $kategori)
+                        <li><a href="#">{{ $kategori->nama_kategori }}</a> <i class="icon-plus2"></i></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="side-widget space50">

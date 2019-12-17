@@ -36,11 +36,15 @@ class FrontController extends Controller
             $search = $request->input('search');
             $artikelSearch = Artikel::with('users')->where('deskripsi', 'LIKE', '%'.$search.'%')->orWhere('judul', 'LIKE', '%'.$search.'%')->paginate(10);
             $artikelTerakhirSearch = Artikel::with('users')->orderBy('published_at', 'DESC')->take(3)->get();
-            return view('front.pages.artikel', compact('artikelSearch', 'artikelTerakhirSearch'));
+            $artikelWithCategories = Artikel::with('kategoris')->get();
+            $artikelWithTags = Artikel::with('tags')->get();
+            return view('front.pages.artikel', compact('artikelSearch', 'artikelTerakhirSearch', 'artikelWithCategories', 'artikelWithTags'));
         } else {
             $artikel = Artikel::with('users')->paginate(10);
             $artikelTerakhir = Artikel::with('users')->orderBy('published_at', 'DESC')->take(3)->get();
-            return view('front.pages.artikel', compact('artikel', 'artikelTerakhir'));
+            $artikelWithCategories = Artikel::with('kategoris')->get();
+            $artikelWithTags = Artikel::with('tags')->get();
+            return view('front.pages.artikel', compact('artikel', 'artikelTerakhir', 'artikelWithCategories', 'artikelWithTags'));
         }
     }
 
@@ -48,12 +52,20 @@ class FrontController extends Controller
     {
         $single = Artikel::with('users')->where('slug', $slug)->first();
         $artikelTerakhir = Artikel::with('users')->orderBy('published_at', 'DESC')->take(3)->get();
-        return view('front.pages.single-artikel', compact('single', 'artikelTerakhir'));
+        $artikelWithCategories = Artikel::with('kategoris')->where('slug', $slug)->first();
+        $artikelWithTags = Artikel::with('tags')->where('slug', $slug)->first();
+        return view('front.pages.single-artikel', compact('single', 'artikelTerakhir', 'artikelWithCategories', 'artikelWithTags'));
     }
 
     public function contact()
     {
         $contact = Contact::first();
         return view('front.pages.contact', compact('contact'));
+    }
+
+    public function about()
+    {
+        $about = About::first();
+        return view('front.pages.about', compact('about'));
     }
 }

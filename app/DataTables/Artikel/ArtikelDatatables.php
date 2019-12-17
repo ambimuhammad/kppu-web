@@ -25,7 +25,7 @@ class ArtikelDatatables
                 })
                 ->addColumn('desc', function ($artikel) {
                     $act = '';
-                    $act .= htmlspecialchars_decode($artikel->deskripsi);
+                    $act .= htmlspecialchars_decode(\Str::limit($artikel->deskripsi, 200, ' ...'));
                     return $act;
                 })
                 ->addColumn('images', function ($artikel) {

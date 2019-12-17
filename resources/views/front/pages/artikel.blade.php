@@ -46,7 +46,7 @@
                             </div>
                             <div class="space30"></div>
                             <div class="post-media">
-                                <img src="{{ asset($listartikel->path) }}" style="width: 333px; height: 214px;"
+                                <img src="{{ asset($listartikel->path) }}" style="width: 408px; height: 214px;"
                                     class="img-responsive" alt="">
                             </div>
                             <div class="space20"></div>
@@ -78,11 +78,11 @@
                 <div class="side-widget space50">
                     <h4>Categories</h4>
                     <ul class="list-unstyled cat-list">
-                        <li> <a href="#">Marketing</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Photography</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Webdesign</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Fashion</a> <i class="icon-plus2"></i></li>
-                        <li> <a href="#">Seo Strategy</a> <i class="icon-plus2"></i></li>
+                        @foreach($artikelWithCategories as $kategori)
+                        @foreach($kategori->kategoris as $kategories)
+                        <li><a href="#">{{ $kategories->nama_kategori }}</a> <i class="icon-plus2"></i></li>
+                        @endforeach
+                        @endforeach
                     </ul>
                 </div>
                 <div class="side-widget space50">

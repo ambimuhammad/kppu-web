@@ -15,4 +15,5 @@ Route::get('/', 'Frontend\FrontController@index')->name('front.index');
 Route::get('/portfolio/{id}', 'Frontend\FrontController@singleRecentWork')->name('front.singlework');
 Route::get('/artikels', 'Frontend\FrontController@artikel')->name('front.artikel');
 Route::get('/artikels/{slug}', 'Frontend\FrontController@singleArtikel')->name('front.singleartikel');
-Route::get('/contact', 'Frontend\FrontController@contact')->name('front.index');
+Route::get('/contact', 'Frontend\FrontController@contact')->name('front.contact');
+Route::get('/about', 'Frontend\FrontController@about')->name('front.about');

@@ -32,39 +32,13 @@
 				<div class="col-md-3">
 					<h4 class="space30">Recent Posts</h4>
 					<ul class="f-posts">
-						<li>
-							<img src="{{ asset('front/trend/images/blog/1/1.jpg') }}" class="img-responsive" alt=""/>
-							<h5><a href="#">Lorem ipsum post title</a></h5>
-							<p><i class="fa fa-comments"></i> 5 Comments</p>
-						</li>
-						<li>
-							<img src="{{ asset('front/trend/images/blog/1/2.jpg') }}" class="img-responsive" alt=""/>
-							<h5><a href="#">Lorem ipsum post title</a></h5>
-							<p><i class="fa fa-comments"></i> 5 Comments</p>
-						</li>
-						<li>
-							<img src="{{ asset('front/trend/images/blog/1/3.jpg') }}" class="img-responsive" alt=""/>
-							<h5><a href="#">Lorem ipsum post title</a></h5>
-							<p><i class="fa fa-comments"></i> 5 Comments</p>
-						</li>
-						<li>
-							<img src="{{ asset('front/trend/images/blog/1/4.jpg') }}" class="img-responsive" alt=""/>
-							<h5><a href="#">Lorem ipsum post title</a></h5>
-							<p><i class="fa fa-comments"></i> 5 Comments</p>
-						</li>
+						{!! Helper::get_recent_post() !!}
 					</ul>
 				</div>
 				<div class="col-md-3">
 					<h4 class="space30">Contact</h4>
 					<ul class="c-info">
-						<li><i class="fa fa-map-marker"></i> 72 Wall street Rd<br>Some county<br>Newyork 20001
-						</li>
-						<li>
-						</li>
-						<li><i class="fa fa-phone"></i> (012) 345 5678 910</li>
-						<li><i class="fa fa-envelope-o"></i> support@dk-themes.com</li>
-						<li><i class="fa fa-skype"></i> myskypeid</li>
-					</ul>
+						{!! Helper::get_footer_contact() !!}
 					<div class="clearfix space10"></div>
 				</div>
 			</div>
