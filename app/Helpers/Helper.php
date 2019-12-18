@@ -34,7 +34,7 @@ class Helper {
         $kategori = Kategori::all();
         $act = '';
         foreach($kategori as $kategori) {
-            $act .= '<li><a href="'.$kategori->link.'">'.$kategori->nama_kategori.'</a></li>';
+            $act .= '<li><a href="'.route('front.product', \Str::slug($kategori->nama_kategori, '-')).'">'.$kategori->nama_kategori.'</a></li>';
         }
         return $act;
     }

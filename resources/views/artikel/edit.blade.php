@@ -154,7 +154,6 @@
                                         @endforeach>{{ $kat->nama_kategori }}</option>
                                     @endforeach
                                 </select>
-                                </select>
                                 @error('kategori_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

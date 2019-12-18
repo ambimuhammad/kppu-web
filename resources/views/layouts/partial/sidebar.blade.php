@@ -71,10 +71,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('product.index') }}"
+                        class="nav-link {{ (Request::segment(2) == 'product') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-shopping-bag"></i>
+                        <p>Product</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('kategori.index') }}"
                         class="nav-link {{ (Request::segment(2) == 'kategori') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-bell"></i>
-                        <p>Kategori</p>
+                        <p>Kategori Product</p>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -5,14 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 margin30">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat magna et tempor iaculis.
-                    Vestibulum vehicula eu est quis cursus. Maecenas sed est in mi semper posuere interdum sit amet
-                    elit. Pellentesque volutpat placerat euismod. Fusce tortor lorem, feugiat non massa non, varius
-                    scelerisque massa. Nulla facilisi.</p>
                 <div class="form-contact">
-                    <div class="required">
-                        <p>( <span style="color:red">*</span> fields are required )</p>
-                    </div>
                     <form class="b-form b-contact-form contact-form" action="contact.php">
                         <div class="row">
                             <div class="col-md-6">
@@ -50,6 +43,9 @@
                                     placeholder="Message"></textarea>
                                 <p class="help-block"></p>
                             </div>
+                        </div>
+                        <div class="required">
+                            <p>( <span style="color:red">*</span> fields are required )</p>
                         </div>
                         <br>
                         <div class="row">

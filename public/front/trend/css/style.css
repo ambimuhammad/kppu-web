@@ -140,8 +140,9 @@ li {
 
 
 #header-main .navbar-brand img {
-	width: 123px;
-	height: 24px;
+	width: 191px;
+	height: 55px;
+	margin-top: -28px;
 }
 
 #header-main .navbar {

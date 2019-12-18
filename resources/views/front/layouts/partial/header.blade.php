@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="index.html" class="navbar-brand"><img
-						src="{{ asset('front/trend/images/basic/logo-dirgatz.png') }}" width="40" height="150"
+						src="{{ asset('front/trend/images/basic/logo-ddirgatz.jpg') }}" width="40" height="150"
 						alt="" /></a>
 			</div>
 
@@ -53,7 +53,7 @@
 						</a>
 					</li>
 					<li class="dropdown">
-						<a href="#">
+						<a href="{{ route('front.project') }}">
 							Project Gallery
 						</a>
 					</li>

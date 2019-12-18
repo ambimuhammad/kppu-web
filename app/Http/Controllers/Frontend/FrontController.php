@@ -13,6 +13,7 @@ use App\Models\Contact\Contact;
 use App\Models\Service\Service;
 use App\Models\Client\Client;
 use App\Models\Kategori\Kategori;
+use App\Models\Product\Product;
 
 class FrontController extends Controller
 {
@@ -85,7 +86,28 @@ class FrontController extends Controller
     public function project()
     {  
         $recent = RecentWork::with('galleries')->get();
-        
         return view('front.pages.project', compact('recent'));
+    }
+
+    public function product(Request $request, $kategori_name)
+    {
+
+        if($kategori_name == 'geotextille-woven') {
+            $replaceSlug = ucwords(\Str::replaceArray('-', [' - '], $kategori_name));
+        } elseif($kategori_name == 'geotextille-non-woven') {
+            $replaceSlug = ucwords(\Str::replaceArray('-', [' - ', ' '], $kategori_name));
+        }  elseif($kategori_name == 'knitted-composite-geotextile') {
+            $replaceSlug = ucwords(\Str::replaceArray('-', [' ', ' '], $kategori_name));
+        }  else {
+            $replaceSlug = ucwords(\Str::replaceArray('-', [' '], $kategori_name));
+        }
+
+        $kategori = Kategori::where('nama_kategori', $replaceSlug)->first();
+        $product = Product::with('kategori')->where('kategori_id', $kategori->id)->first();
+        if(empty($product)) {
+            return view('front.errors.404');
+        } else {
+            return view('front.pages.product', compact('kategori', 'product'));
+        }
     }
 }
