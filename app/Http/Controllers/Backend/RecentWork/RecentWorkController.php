@@ -98,8 +98,8 @@ class RecentWorkController extends Controller
     public function edit($id)
     {
         //
-        $artikel = RecentWork::findOrFail($id);
-        return view('recent-work.edit', compact('artikel'));
+        $recent = RecentWork::with('galleries')->findOrFail($id);
+        return view('recent-work.edit', compact('recent'));
     }
 
     /**
