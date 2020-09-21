@@ -8,9 +8,9 @@ trait Authorizable
         'index' => 'view',
         'edit' => 'edit',
         'show' => 'show',
-        'update' => 'edit',
+        'update' => 'update',
         'create' => 'create',
-        'store' => 'create',
+        'store' => 'save',
         'destroy' => 'delete'
     ];
 
