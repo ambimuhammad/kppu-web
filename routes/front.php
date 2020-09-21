@@ -17,7 +17,6 @@ Route::get('/artikels', 'Frontend\FrontController@artikel')->name('front.artikel
 Route::get('/artikels/{slug}', 'Frontend\FrontController@singleArtikel')->name('front.singleartikel');
 Route::get('/contact', 'Frontend\FrontController@contact')->name('front.contact');
 Route::get('/about/{slug}', 'Frontend\FrontController@about')->name('front.about');
-Route::get('/about/{slug}', 'Frontend\FrontController@about')->name('front.about');
 Route::get('/services/{slug}', 'Frontend\FrontController@service')->name('front.service');
 Route::get('/project-gallery', 'Frontend\FrontController@project')->name('front.project');
 Route::get('/product/kategori/{kategori_name}', 'Frontend\FrontController@product')->name('front.product');
